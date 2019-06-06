@@ -24,17 +24,17 @@
           <a class="navbar-item">Gilles Peterson</a>
         </div>
 
-        <div class="navbar-end">
-          
-        </div>
+        <div class="navbar-end"></div>
       </div>
     </nav>
 
     <section class="hero is-link is-fullheight-with-navbar has-bg-img">
       <div class="hero-body">
-        <div class="container has-text-centered">          
-          <h1 class="title">Playlists from every show and random selections</h1>
-          <h2 class="subtitle">Specialist music player</h2>
+        <div class="container has-text-centered">
+          <div class="box has-background-black">
+            <h1 class="title">Playlists from every show and random selections</h1>
+            <h2 class="subtitle">Specialist music player</h2>
+          </div>
         </div>
       </div>
     </section>
@@ -45,7 +45,12 @@
           <div class="card is-shady">
             <div class="card-image">
               <figure class="image is-4by4">
-                <img src="./assets/img/benji-b.jpg" alt="Benji B" class="modal-button" data-target="modal-image1">
+                <img
+                  src="./assets/img/benji-b.jpg"
+                  alt="Benji B"
+                  class="modal-button"
+                  data-target="modal-image1"
+                >
               </figure>
             </div>
             <div class="card-content">
@@ -61,7 +66,12 @@
           <div class="card is-shady">
             <div class="card-image">
               <figure class="image is-4by4">
-                <img src="./assets/img/gilles-peterson.jpg" alt="Gilles Peterson" class="modal-button" data-target="modal-image2">
+                <img
+                  src="./assets/img/gilles-peterson.jpg"
+                  alt="Gilles Peterson"
+                  class="modal-button"
+                  data-target="modal-image2"
+                >
               </figure>
             </div>
             <div class="card-content">
@@ -72,9 +82,8 @@
               </div>
             </div>
           </div>
-        </div>      
+        </div>
       </div>
-      
     </section>
     <footer class="footer">
       <div class="container">
@@ -196,5 +205,13 @@ export default {
 @import "./assets/css/hero.css";
 @import "./assets/css/bulmaswatchlux.css";
 
-.has-bg-img { background: url('./assets/img/hero-image.jpg')center center; background-size:cover; }
+.has-bg-img {
+  background: url("./assets/img/hero-image.jpg") center center;
+  background-size: cover;
+}
+
+.half-black {
+  /* background: rgba(0, 0, 0, 0.5); */
+  opacity: 20%;
+}
 </style>
