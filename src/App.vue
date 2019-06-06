@@ -2,8 +2,8 @@
   <div id="app">
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-        <a class="navbar-item" href="https://bulma.io">
-          <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+        <a class="navbar-item" href="/">
+          <font-awesome-icon icon="compact-disc" size="lg"/>
         </a>
 
         <a
@@ -13,103 +13,66 @@
           aria-expanded="false"
           data-target="navbarBasicExample"
         >
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
+          <span aria-hidden="true">Benji B</span>
+          <span aria-hidden="true">Gilles Peterson</span>
         </a>
       </div>
 
       <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
-          <a class="navbar-item">Home</a>
-
-          <a class="navbar-item">Documentation</a>
-
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link">More</a>
-
-            <div class="navbar-dropdown">
-              <a class="navbar-item">About</a>
-              <a class="navbar-item">Jobs</a>
-              <a class="navbar-item">Contact</a>
-              <hr class="navbar-divider">
-              <a class="navbar-item">Report an issue</a>
-            </div>
-          </div>
+          <a class="navbar-item">Benji B</a>
+          <a class="navbar-item">Gilles Peterson</a>
         </div>
 
         <div class="navbar-end">
-          <div class="navbar-item">
-            <div class="buttons">
-              <a class="button is-primary">
-                <strong>Sign up</strong>
-              </a>
-              <a class="button is-light">Log in</a>
-            </div>
-          </div>
+          
         </div>
       </div>
     </nav>
 
-    <section class="hero is-medium">
-        <figure class="image">
-            <img src="https://images.pexels.com/photos/167636/pexels-photo-167636.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
-        </figure>
+    <section class="hero is-link is-fullheight-with-navbar has-bg-img">
+      <div class="hero-body">
+        <div class="container has-text-centered">          
+          <h1 class="title">Playlists from every show and random selections</h1>
+          <h2 class="subtitle">Specialist music player</h2>
+        </div>
+      </div>
     </section>
 
     <section class="container">
       <div class="columns features">
-        <div class="column is-4">
+        <div class="column is-6">
           <div class="card is-shady">
-            <div class="card-image has-text-centered">
-              <i class="fa fa-paw"></i>
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <img src="./assets/img/benjib.jpg" alt="Placeholder image" class="modal-button" data-target="modal-image1">
+              </figure>
             </div>
             <div class="card-content">
               <div class="content">
-                <h4>Tristique senectus et netus et.</h4>
+                <h4>Benji B</h4>
                 <p>Purus semper eget duis at tellus at urna condimentum mattis. Non blandit massa enim nec. Integer enim neque volutpat ac tincidunt vitae semper quis. Accumsan tortor posuere ac ut consequat semper viverra nam.</p>
-                <p>
-                  <a href="#">Learn more</a>
-                </p>
+                <span class="button is-link modal-button" data-target="modal-image1">Image modal</span>
               </div>
             </div>
           </div>
         </div>
-        <div class="column is-4">
+        <div class="column is-6">
           <div class="card is-shady">
-            <div class="card-image has-text-centered">
-              <i class="fa fa-empire"></i>
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <img src="https://source.unsplash.com/RWnpyGtY1aU" alt="Placeholder image" class="modal-button" data-target="modal-image2">
+              </figure>
             </div>
             <div class="card-content">
               <div class="content">
-                <h4>Tempor orci dapibus ultrices in.</h4>
-                <p>
-                  Ut venenatis tellus in metus vulputate. Amet consectetur adipiscing elit pellentesque. Sed arcu non odio euismod lacinia at quis risus. Faucibus turpis in eu mi bibendum neque egestas cmonsu songue. Phasellus vestibulum lorem
-                  sed risus.
-                </p>
-                <p>
-                  <a href="#">Learn more</a>
-                </p>
+                <h4>Gilles Peterson</h4>
+                <p>Purus semper eget duis at tellus at urna condimentum mattis. Non blandit massa enim nec. Integer enim neque volutpat ac tincidunt vitae semper quis. Accumsan tortor posuere ac ut consequat semper viverra nam.</p>
+                <span class="button is-link modal-button" data-target="modal-image2">Image modal</span>
               </div>
             </div>
           </div>
-        </div>
-        <div class="column is-4">
-          <div class="card is-shady">
-            <div class="card-image has-text-centered">
-              <i class="fa fa-apple"></i>
-            </div>
-            <div class="card-content">
-              <div class="content">
-                <h4>Leo integer malesuada nunc vel risus.</h4>
-                <p>Imperdiet dui accumsan sit amet nulla facilisi morbi. Fusce ut placerat orci nulla pellentesque dignissim enim. Libero id faucibus nisl tincidunt eget nullam. Commodo viverra maecenas accumsan lacus vel facilisis.</p>
-                <p>
-                  <a href="#">Learn more</a>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+        </div>      
       </div>
       <div class="intro column is-8 is-offset-2">
         <h2 class="title">Perfect for developers or designers!</h2>
@@ -354,15 +317,11 @@ export default {
 </script>
 
 <style>
-@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
-@import "../node_modules/bulma/css/bulma.css";
+/* @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"); */
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+/* @import "../node_modules/bulma/css/bulma.css"; */
 @import "./assets/css/hero.css";
+@import "./assets/css/bulmaswatchlux.css";
 
-/* #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-} */
+.has-bg-img { background: url('./assets/img/hero-image.jpg')center center; background-size:cover; }
 </style>
