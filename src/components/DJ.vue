@@ -19,7 +19,7 @@
    
     <div class="columns">
       <div class="column is-3">
-        <div class="card">
+        <div class="card is-shady">
         <header class="card-header">
           <p class="card-header-title"> {{djName}} </p>
           <a class="card-header-icon">
@@ -52,7 +52,7 @@
         </ul>
       </div>
         <div v-if="activeTab === 1">
-            <div class="card ">
+            <div class="card is-shady">
           <header class="card-header">
             <p class="card-header-title"> Recent shows </p>
             <a class="card-header-icon">
