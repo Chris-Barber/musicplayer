@@ -56,10 +56,8 @@
               <div class="content">
                 <h4>Gilles Peterson</h4>
                 <p>
-                  To many a series of discordant, often obscure and forgotten names but to Gilles Peterson and an ever
-                  growing number of radio listeners, clubbers and music lovers, these and many other artists form a rich,
-                  vibrant and coherent thread stretching from the primal roots of Africa to the bass culture of Jamaica via
-                  the urban soul of Detroit to the intricate stylings of the European new jazz generation.
+                  Gilles Peterson is a French-born broadcaster, DJ and record label owner in England. He has founded 
+                  influential labels such as Acid Jazz and Talkin' Loud, and started his current label, Brownswood Recordings, in 2006.
                 </p>
                 <router-link to="/DJ/Gilles-Peterson">
                   <span class="button is-link modal-button" data-target="modal-image1">Listen</span>

@@ -42,48 +42,49 @@
       </div>
       <div class="column is-9">
         <div class="tabs">
-    <ul>
-      <li class="is-active">
-        <a>Pictures</a>
-      </li>
-      <li>
-        <a>Music</a>
-      </li>
-      <li>
-        <a>Videos</a>
-      </li>
-      <li>
-        <a>Documents</a>
-      </li>
-    </ul>
-  </div>
-
-        <div class="card ">
-        <header class="card-header">
-          <p class="card-header-title"> Shows </p>
-          <a class="card-header-icon">
-            <span class="icon"> <i class="fa fa-angle-down"></i> </span>
-          </a>
-        </header>
-        <div class="card-content">      
-          <article class="media">
-              <figure class="media-left">
-                <p class="image is-64x64">
-                  <img src="https://s3.amazonaws.com/uifaces/faces/twitter/zeldman/128.jpg">
-                </p>
-              </figure>
-              <div class="media-content">
-                <div class="content">
-                  <p>
-                    <strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
-                    <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
+        <ul>
+          <li v-bind:class="[ activeTab === 1 ? 'is-active' : '' ]">
+            <a @click="activeTab=1">Recent shows</a>
+          </li>
+          <li v-bind:class="[ activeTab === 2 ? 'is-active' : '' ]">
+            <a @click="activeTab=2">All shows</a>
+          </li>          
+        </ul>
+      </div>
+        <div v-if="activeTab === 1">
+            <div class="card ">
+          <header class="card-header">
+            <p class="card-header-title"> Recent shows </p>
+            <a class="card-header-icon">
+              <span class="icon"> <i class="fa fa-angle-down"></i> </span>
+            </a>
+          </header>
+          <div class="card-content">      
+            <article class="media">
+                <figure class="media-left">
+                  <p class="image is-64x64">
+                    <img src="https://s3.amazonaws.com/uifaces/faces/twitter/zeldman/128.jpg">
                   </p>
-                </div>     
-              </div>
-            </article>
+                </figure>
+                <div class="media-content">
+                  <div class="content">
+                    <!-- <p>
+                      <strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+                      <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
+                    </p> -->
+                    <strong>Marcos Valle</strong> <small> 18 July, 2018</small><br>
+                    <p>Gilles is joined by Brazilian singer, songwriter and innovator Marcos Valle.</p>
+                  </div>     
+                </div>
+              </article>
+          </div>
         </div>
-
         </div>
+        <div v-if="activeTab === 2">
+            Content for tab two
+        </div>
+        
+        
       </div>
     </div>
   </section>
@@ -93,6 +94,11 @@
 export default {
   name: "dj",
   components: {},
+  data: function() {
+    return {
+      activeTab: 1
+    };
+  },
   computed: {
     djName: function() {
       return this.dj.replace("-", " ");
