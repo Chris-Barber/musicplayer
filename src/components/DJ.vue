@@ -2,7 +2,7 @@
   <section class="container">
     <div class="columns">
       <div class="column is-12">
-        <div class="box dj__nav">
+        <div class="dj__nav">
           <nav class="breadcrumb" aria-label="breadcrumbs">
             <ul>
               <li>
@@ -16,148 +16,73 @@
         </div>
       </div>
     </div>
+   
     <div class="columns">
-      <div class="column is-3"></div>
+      <div class="column is-3">
+        <div class="card">
+        <header class="card-header">
+          <p class="card-header-title"> {{djName}} </p>
+          <a class="card-header-icon">
+            <span class="icon"> <i class="fa fa-angle-down"></i> </span>
+          </a>
+        </header>
+        <div class="card-content">
+          <div class="content"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
+            <a>@bulmaio</a>.
+            <a>#css</a>
+            <a>#responsive</a>
+            <br> <small>11:09 PM - 1 Jan 2016</small> </div>
+        </div>
+        <footer class="card-footer">
+          <a class="card-footer-item">Save</a>
+          <a class="card-footer-item">Edit</a>
+          <a class="card-footer-item">Delete</a>
+        </footer>
+      </div>
+      </div>
       <div class="column is-9">
-        <div class="box content dj__shows">
-          <article class="post">
-            <h4>Bulma: How do you center a button in a box?</h4>
-            <div class="media">
-              <div class="media-left">
-                <p class="image is-32x32">
-                  <img src="http://bulma.io/images/placeholders/128x128.png">
+        <div class="tabs">
+    <ul>
+      <li class="is-active">
+        <a>Pictures</a>
+      </li>
+      <li>
+        <a>Music</a>
+      </li>
+      <li>
+        <a>Videos</a>
+      </li>
+      <li>
+        <a>Documents</a>
+      </li>
+    </ul>
+  </div>
+
+        <div class="card ">
+        <header class="card-header">
+          <p class="card-header-title"> Shows </p>
+          <a class="card-header-icon">
+            <span class="icon"> <i class="fa fa-angle-down"></i> </span>
+          </a>
+        </header>
+        <div class="card-content">      
+          <article class="media">
+              <figure class="media-left">
+                <p class="image is-64x64">
+                  <img src="https://s3.amazonaws.com/uifaces/faces/twitter/zeldman/128.jpg">
                 </p>
-              </div>
+              </figure>
               <div class="media-content">
                 <div class="content">
                   <p>
-                    <a href="#">@jsmith</a> replied 34 minutes ago &nbsp;
-                    <span class="tag">Question</span>
+                    <strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+                    <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
                   </p>
-                </div>
+                </div>     
               </div>
-              <div class="media-right">
-                <span class="has-text-grey-light">
-                  <i class="fa fa-comments"></i> 1
-                </span>
-              </div>
-            </div>
-          </article>
-          <article class="post">
-            <h4>How can I make a bulma button go full width?</h4>
-            <div class="media">
-              <div class="media-left">
-                <p class="image is-32x32">
-                  <img src="http://bulma.io/images/placeholders/128x128.png">
-                </p>
-              </div>
-              <div class="media-content">
-                <div class="content">
-                  <p>
-                    <a href="#">@red</a> replied 40 minutes ago &nbsp;
-                    <span class="tag">Question</span>
-                  </p>
-                </div>
-              </div>
-              <div class="media-right">
-                <span class="has-text-grey-light">
-                  <i class="fa fa-comments"></i> 0
-                </span>
-              </div>
-            </div>
-          </article>
-          <article class="post">
-            <h4>TypeError: Data must be a string or a buffer when trying touse vue-bulma-tabs</h4>
-            <div class="media">
-              <div class="media-left">
-                <p class="image is-32x32">
-                  <img src="http://bulma.io/images/placeholders/128x128.png">
-                </p>
-              </div>
-              <div class="media-content">
-                <div class="content">
-                  <p>
-                    <a href="#">@jsmith</a> replied 53 minutes ago &nbsp;
-                    <span class="tag">Question</span>
-                  </p>
-                </div>
-              </div>
-              <div class="media-right">
-                <span class="has-text-grey-light">
-                  <i class="fa fa-comments"></i> 13
-                </span>
-              </div>
-            </div>
-          </article>
-          <article class="post">
-            <h4>How to vertically center elements in Bulma?</h4>
-            <div class="media">
-              <div class="media-left">
-                <p class="image is-32x32">
-                  <img src="http://bulma.io/images/placeholders/128x128.png">
-                </p>
-              </div>
-              <div class="media-content">
-                <div class="content">
-                  <p>
-                    <a href="#">@brown</a> replied 3 hours ago &nbsp;
-                    <span class="tag">Question</span>
-                  </p>
-                </div>
-              </div>
-              <div class="media-right">
-                <span class="has-text-grey-light">
-                  <i class="fa fa-comments"></i> 2
-                </span>
-              </div>
-            </div>
-          </article>
-          <article class="post">
-            <h4>I'm trying to use hamburger menu on bulma css, but it doesn't work. What is wrong?</h4>
-            <div class="media">
-              <div class="media-left">
-                <p class="image is-32x32">
-                  <img src="http://bulma.io/images/placeholders/128x128.png">
-                </p>
-              </div>
-              <div class="media-content">
-                <div class="content">
-                  <p>
-                    <a href="#">@hamburgler</a> replied 5 hours ago &nbsp;
-                    <span class="tag">Question</span>
-                  </p>
-                </div>
-              </div>
-              <div class="media-right">
-                <span class="has-text-grey-light">
-                  <i class="fa fa-comments"></i> 2
-                </span>
-              </div>
-            </div>
-          </article>
-          <article class="post">
-            <h4>How to make tiles wrap with Bulma CSS?</h4>
-            <div class="media">
-              <div class="media-left">
-                <p class="image is-32x32">
-                  <img src="http://bulma.io/images/placeholders/128x128.png">
-                </p>
-              </div>
-              <div class="media-content">
-                <div class="content">
-                  <p>
-                    <a href="#">@rapper</a> replied 3 hours ago &nbsp;
-                    <span class="tag">Question</span>
-                  </p>
-                </div>
-              </div>
-              <div class="media-right">
-                <span class="has-text-grey-light">
-                  <i class="fa fa-comments"></i> 2
-                </span>
-              </div>
-            </div>
-          </article>
+            </article>
+        </div>
+
         </div>
       </div>
     </div>
@@ -178,33 +103,12 @@ export default {
 </script>
 
 <style scoped>
-.media-left img {
-  border-radius: 50%;
-}
-.media-content p {
-  font-size: 14px;
-  line-height: 2.3;
-  font-weight: 700;
-  color: #8f99a3;
-}
-article.post {
-  margin: 1rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid #e6eaee;
-}
-article.post:last-child {
-  padding-bottom: 0;
-  border-bottom: none;
-}
-.menu-list li {
-  padding: 5px;
-}
 .dj__nav {
-    margin-top: 1rem;
+  margin-top: 1.5rem;
 }
 
 .dj__shows {
-    margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 </style>
 
