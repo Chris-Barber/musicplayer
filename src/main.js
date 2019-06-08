@@ -4,6 +4,10 @@ import router from "./router";
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faCompactDisc } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import VueResource from "vue-resource";
+
+Vue.use(VueResource);
+Vue.use(router);
 
 library.add(faCompactDisc)
 

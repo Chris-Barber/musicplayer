@@ -1,10 +1,9 @@
 <template>
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <a class="navbar-item" href="/">
+      <router-link class="navbar-item" to="/">
         <font-awesome-icon icon="compact-disc" size="lg"/>
-      </a>
-
+      </router-link>
       <a
         role="button"
         class="navbar-burger burger"
@@ -12,15 +11,19 @@
         aria-expanded="false"
         data-target="navbarBasicExample"
       >
-        <span aria-hidden="true">Benji B</span>
-        <span aria-hidden="true">Gilles Peterson</span>
+        <router-link to="/DJ/Gilles-Peterson">
+          <span aria-hidden="true">Gilles Peterson</span>
+        </router-link>
+        <router-link to="/DJ/Benji-B">
+          <span aria-hidden="true">Benji B</span>
+        </router-link>
       </a>
     </div>
 
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
-        <a class="navbar-item">Benji B</a>
-        <a class="navbar-item">Gilles Peterson</a>
+        <router-link class="navbar-item" to="/DJ/Gilles-Peterson">Gilles Peterson</router-link>
+        <router-link class="navbar-item" to="/DJ/Benji-B">Benji B</router-link>
       </div>
 
       <div class="navbar-end"></div>
@@ -30,6 +33,6 @@
 
 <script>
 export default {
-    name: "Header",
-}
+  name: "Header"
+};
 </script>

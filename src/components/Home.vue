@@ -70,3 +70,10 @@
     </section>
   </div>
 </template>
+
+<style scoped>
+.has-bg-img {
+  background: url("../assets/img/dj.jpg") center center;
+  background-size: cover;
+}
+</style>

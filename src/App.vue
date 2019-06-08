@@ -26,13 +26,14 @@ export default {
 @import "./assets/css/hero.css";
 @import "./assets/css/bulmaswatchlux.css";
 
-.has-bg-img {
-  background: url("./assets/img/hero-image.jpg") center center;
-  background-size: cover;
-}
-
 .half-black {
   /* background: rgba(0, 0, 0, 0.5); */
   opacity: 20%;
 }
+
+.dj__nav {
+  margin-top: 1.5rem;
+  padding-left: 1rem;
+}
+
 </style>

@@ -7,7 +7,7 @@
             <ul>
               <li>
                 <a href="#">DJ</a>
-              </li>             
+              </li>
               <li class="is-active">
                 <a href="#" aria-current="page">{{djName}}</a>
               </li>
@@ -16,84 +16,63 @@
         </div>
       </div>
     </div>
-   
+
     <div class="columns">
       <div class="column is-3">
-        <div class="card is-shady">
-        <header class="card-header">
-          <p class="card-header-title"> {{djName}} </p>
-          <a class="card-header-icon">
-            <span class="icon"> <i class="fa fa-angle-down"></i> </span>
-          </a>
-        </header>
-        <div class="card-content">
-          <div class="content"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-            <a>@bulmaio</a>.
-            <a>#css</a>
-            <a>#responsive</a>
-            <br> <small>11:09 PM - 1 Jan 2016</small> </div>
+        <div v-if="isBenjiB">
+          <benji/>
         </div>
-        <footer class="card-footer">
-          <a class="card-footer-item">Save</a>
-          <a class="card-footer-item">Edit</a>
-          <a class="card-footer-item">Delete</a>
-        </footer>
-      </div>
+        <div v-if="isGillesPeterson">
+          <gilles/>
+        </div>
+        <MixTape/>
       </div>
       <div class="column is-9">
         <div class="tabs">
-        <ul>
-          <li v-bind:class="[ activeTab === 1 ? 'is-active' : '' ]">
-            <a @click="activeTab=1">Recent shows</a>
-          </li>
-          <li v-bind:class="[ activeTab === 2 ? 'is-active' : '' ]">
-            <a @click="activeTab=2">All shows</a>
-          </li>          
-        </ul>
-      </div>
-        <div v-if="activeTab === 1">
-            <div class="card is-shady">
-          <header class="card-header">
-            <p class="card-header-title"> Recent shows </p>
-            <a class="card-header-icon">
-              <span class="icon"> <i class="fa fa-angle-down"></i> </span>
-            </a>
-          </header>
-          <div class="card-content">      
-            <article class="media">
-                <figure class="media-left">
-                  <p class="image is-64x64">
-                    <img src="https://s3.amazonaws.com/uifaces/faces/twitter/zeldman/128.jpg">
-                  </p>
-                </figure>
-                <div class="media-content">
-                  <div class="content">
-                    <!-- <p>
-                      <strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
-                      <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
-                    </p> -->
-                    <strong>Marcos Valle</strong> <small> 18 July, 2018</small><br>
-                    <p>Gilles is joined by Brazilian singer, songwriter and innovator Marcos Valle.</p>
-                  </div>     
-                </div>
-              </article>
-          </div>
+          <ul>
+            <li v-bind:class="[ activeTab === 1 ? 'is-active' : '' ]">
+              <a @click="activeTab=1">Recent shows</a>
+            </li>
+            <li v-bind:class="[ activeTab === 2 ? 'is-active' : '' ]">
+              <a @click="activeTab=2">All shows</a>
+            </li>
+            <li v-bind:class="[ activeTab === 3 ? 'is-active' : '' ]">
+              <a @click="activeTab=3">Specials</a>
+            </li>
+          </ul>
         </div>
+        <div v-if="activeTab === 1">
+          <recent :dj="dj"/>
         </div>
         <div v-if="activeTab === 2">
-            Content for tab two
+          <archive :dj="dj"/>
         </div>
-        
-        
+        <div v-if="activeTab === 3">
+          <specials :dj="dj"/>
+        </div>
       </div>
     </div>
   </section>
 </template>
 
 <script>
+import Recent from "./Recent";
+import Archive from "./Archive";
+import Specials from "./Specials";
+import Benji from "./Benji";
+import Gilles from "./Gilles";
+import MixTape from "./MixTape";
+
 export default {
   name: "dj",
-  components: {},
+  components: {
+    Recent,
+    Archive,
+    Specials,
+    Gilles,
+    Benji,
+    MixTape
+  },
   data: function() {
     return {
       activeTab: 1
@@ -102,6 +81,12 @@ export default {
   computed: {
     djName: function() {
       return this.dj.replace("-", " ");
+    },
+    isBenjiB: function() {
+      return this.dj.toLowerCase() === "benji-b";
+    },
+    isGillesPeterson: function() {
+      return this.dj.toLowerCase() === "gilles-peterson";
     }
   },
   props: ["dj"]
@@ -109,10 +94,6 @@ export default {
 </script>
 
 <style scoped>
-.dj__nav {
-  margin-top: 1.5rem;
-}
-
 .dj__shows {
   margin-bottom: 1.5rem;
 }
