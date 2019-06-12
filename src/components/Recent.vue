@@ -18,7 +18,7 @@
         <div class="media-content">
           <div class="content">
             <a href="#" @click="goToTracks(show.airDate)"><strong>{{ show.title }}</strong></a>            
-            <small>{{ show.airDate | formatDate }}</small>
+            <small>&nbsp;{{ show.airDate | formatDate }}</small>
             <br>
             <p>{{ show.summary}}</p>
           </div>

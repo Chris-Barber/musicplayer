@@ -48,7 +48,7 @@
             <article class="media" v-for="track in tracks">
               <figure class="media-left track__image">
                 <p class="image is-64x64">
-                  <img src="https://s3.amazonaws.com/uifaces/faces/twitter/zeldman/128.jpg">
+                  <img :src=track.thumbnailLink >
                 </p>
               </figure>
               <div class="media-content">
