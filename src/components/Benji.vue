@@ -8,7 +8,8 @@
     <div class="card-content">
       <div class="content">
         <h1>Benji B</h1>
-        <p>Textjsdhfkjasdhfajsdlhsfj</p>
+        <blockquote>Benji B is one of the UK's most respected DJs. Renowned worldwide for his radio shows and club sets alike, he's amassed a fan base who have come to see him as a leader in the future music movement.</blockquote>
+        <a href="https://www.residentadvisor.net/dj/benjib/biography">Resident Advisor</a>
       </div>
     </div>
   </div>
