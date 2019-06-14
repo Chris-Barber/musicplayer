@@ -86,6 +86,11 @@ export default {
       activeTab: 1
     };
   },
+  watch: {
+    '$route.params.dj': function (dj) {
+      this.activeTab = 1;
+    }
+  },
   computed: {
     djName: function() {
       return this.dj.replace("-", " ");

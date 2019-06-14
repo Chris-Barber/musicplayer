@@ -24,15 +24,10 @@
       </header>
       <div class="card-content">
         <article class="media" v-for="show in shows">
-          <figure class="media-left">
-            <p class="image is-64x64">
-              <img src="https://s3.amazonaws.com/uifaces/faces/twitter/zeldman/128.jpg">
-            </p>
-          </figure>
           <div class="media-content">
             <div class="content">
               <a href="#" @click="goToTracks(show.airDate)">
-                <strong>{{ show.title }}</strong>
+                <h4>{{ show.title }}</h4>
               </a>
               <small>&nbsp;{{ show.airDate | formatDate }}</small>
               <br>
