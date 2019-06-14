@@ -39,6 +39,9 @@
             <li v-bind:class="[ activeTab === 3 ? 'is-active' : '' ]">
               <a @click="activeTab=3">Specials</a>
             </li>
+            <li v-bind:class="[ activeTab === 4 ? 'is-active' : '' ]">
+              <a @click="activeTab=4">Stats</a>
+            </li>
           </ul>
         </div>
         <div v-if="activeTab === 1">
@@ -49,6 +52,9 @@
         </div>
         <div v-if="activeTab === 3">
           <specials :dj="dj"/>
+        </div>
+        <div v-if="activeTab === 4">
+          <stats :dj="dj"/>
         </div>
       </div>
     </div>
@@ -62,6 +68,7 @@ import Specials from "./Specials";
 import Benji from "./Benji";
 import Gilles from "./Gilles";
 import MixTape from "./MixTape";
+import Stats from "./Stats";
 
 export default {
   name: "dj",
@@ -71,7 +78,8 @@ export default {
     Specials,
     Gilles,
     Benji,
-    MixTape
+    MixTape,
+    Stats
   },
   data: function() {
     return {

@@ -1,31 +1,34 @@
 <template>
-  <div class="card is-shady">
-    <header class="card-header">
-      <p class="card-header-title">Specials</p>
-      <a class="card-header-icon">
-        <span class="icon">
-          <i class="fa fa-angle-down"></i>
-        </span>
-      </a>
-    </header>
-    <div class="card-content">
-
-      <article class="media" v-for="show in shows">
-        <figure class="media-left">
-          <p class="image is-64x64">
-            <img src="https://s3.amazonaws.com/uifaces/faces/twitter/zeldman/128.jpg">
-          </p>
-        </figure>
-        <div class="media-content">
-          <div class="content">
-            <a href="#" @click="goToTracks(show.airDate)"><strong>{{ show.title }}</strong></a> 
-            <small>&nbsp;{{ show.airDate | formatDate }}</small>
-            <br>
-            <p>{{ show.summary}}</p>
+  <div>
+    <pulse-loader :loading="loading"></pulse-loader>
+    <div class="card is-shady" v-if="!loading">
+      <header class="card-header">
+        <p class="card-header-title">Specials</p>
+        <a class="card-header-icon">
+          <span class="icon">
+            <i class="fa fa-angle-down"></i>
+          </span>
+        </a>
+      </header>
+      <div class="card-content">
+        <article class="media" v-for="show in shows">
+          <figure class="media-left">
+            <p class="image is-64x64">
+              <img src="https://s3.amazonaws.com/uifaces/faces/twitter/zeldman/128.jpg">
+            </p>
+          </figure>
+          <div class="media-content">
+            <div class="content">
+              <a href="#" @click="goToTracks(show.airDate)">
+                <strong>{{ show.title }}</strong>
+              </a>
+              <small>&nbsp;{{ show.airDate | formatDate }}</small>
+              <br>
+              <p>{{ show.summary}}</p>
+            </div>
           </div>
-        </div>
-      </article>
-
+        </article>
+      </div>
     </div>
   </div>
 </template>
@@ -34,6 +37,7 @@
 import EpisodeService from "../services/episode.service";
 import Vue from "vue";
 import moment from "moment";
+import PulseLoader from "./PulseLoader.vue";
 
 Vue.filter("formatDate", function(value) {
   if (value) {
@@ -43,9 +47,13 @@ Vue.filter("formatDate", function(value) {
 
 export default {
   name: "specials",
+  components: {
+    PulseLoader
+  },
   data() {
     return {
-      shows: []
+      shows: [],
+      loading: true
     };
   },
   props: ["dj"],
@@ -61,6 +69,7 @@ export default {
     fetchData() {
       return EpisodeService.getSpecials(this.dj).then(response => {
         this.shows = response.data;
+        this.loading = false;
       });
     },
     goToTracks(episodeDate) {

@@ -12,7 +12,8 @@
       </ul>
     </div>
 
-    <div class="card is-shady">
+    <pulse-loader :loading="loading"></pulse-loader>
+    <div class="card is-shady" v-if="!loading">
       <header class="card-header">
         <p class="card-header-title">Archive {{activeYear}}</p>
         <a class="card-header-icon">
@@ -30,7 +31,9 @@
           </figure>
           <div class="media-content">
             <div class="content">
-              <a href="#" @click="goToTracks(show.airDate)"><strong>{{ show.title }}</strong></a> 
+              <a href="#" @click="goToTracks(show.airDate)">
+                <strong>{{ show.title }}</strong>
+              </a>
               <small>&nbsp;{{ show.airDate | formatDate }}</small>
               <br>
               <p>{{ show.summary}}</p>
@@ -46,6 +49,7 @@
 import EpisodeService from "../services/episode.service";
 import Vue from "vue";
 import moment from "moment";
+import PulseLoader from "./PulseLoader.vue";
 
 Vue.filter("formatDate", function(value) {
   if (value) {
@@ -55,11 +59,15 @@ Vue.filter("formatDate", function(value) {
 
 export default {
   name: "archive",
+  components: {
+    PulseLoader
+  },
   data() {
     return {
       shows: [],
       years: [],
-      activeYear: 0
+      activeYear: 0,
+      loading: true
     };
   },
   props: ["dj"],
@@ -75,9 +83,11 @@ export default {
   },
   methods: {
     clickYear(year) {
+      this.loading = true;
       this.activeYear = year;
       return EpisodeService.getArchiveYear(this.dj, year).then(response => {
         this.shows = response.data;
+        this.loading = false;
       });
     },
     fetchYears() {

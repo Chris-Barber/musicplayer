@@ -30,7 +30,8 @@
         </div>
       </div>
       <div class="column is-9">
-        <div class="card is-shady">
+        <pulse-loader :loading="loading"></pulse-loader>
+        <div class="card is-shady" v-if="!loading">
           <header class="card-header">
             <p class="card-header-title">{{episode.title}}</p>
             <a class="card-header-icon">
@@ -75,6 +76,7 @@ import Vue from "vue";
 import moment from "moment";
 import Benji from "./Benji";
 import Gilles from "./Gilles";
+import PulseLoader from "./PulseLoader.vue";
 
 Vue.filter("formatDate", function(value) {
   if (value) {
@@ -87,7 +89,8 @@ export default {
   props: ["dj", "episodeDate"],
   components: {
     Gilles,
-    Benji
+    Benji,
+    PulseLoader
   },
   created() {
     this.fetchData();
@@ -95,7 +98,8 @@ export default {
   data() {
     return {
       tracks: [],
-      episode: {}
+      episode: {},
+      loading: true
     };
   },
   computed: {
@@ -115,6 +119,7 @@ export default {
         response => {
           this.tracks = response.data.tracks;
           this.episode = response.data.episode;
+          this.loading = false;
         }
       );
     }
