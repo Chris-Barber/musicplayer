@@ -47,21 +47,7 @@
             <hr>
 
             <article class="media" v-for="track in tracks">
-              <figure class="media-left track__image">
-                <p class="image is-64x64">
-                  <img :src=track.thumbnailLink >
-                </p>
-              </figure>
-              <div class="media-content">
-                <div class="content">
-                  <strong>{{ track.title}}</strong>
-                  <p>
-                    {{ track.artist}}
-                    <br>
-                    <small>{{ track.label }}</small>
-                  </p>
-                </div>
-              </div>
+              <song :track="track"/>
             </article>
           </div>
         </div>
@@ -77,6 +63,7 @@ import moment from "moment";
 import Benji from "./Benji";
 import Gilles from "./Gilles";
 import PulseLoader from "./PulseLoader.vue";
+import Song from "./playlist/Song";
 
 Vue.filter("formatDate", function(value) {
   if (value) {
@@ -90,7 +77,8 @@ export default {
   components: {
     Gilles,
     Benji,
-    PulseLoader
+    PulseLoader,
+    Song
   },
   created() {
     this.fetchData();
@@ -118,6 +106,11 @@ export default {
       return EpisodeService.getTracks(this.dj, this.episodeDate).then(
         response => {
           this.tracks = response.data.tracks;
+
+          this.tracks.forEach(element => {
+            element.youtubeId = "1PrWA4C8eLw";
+          });
+
           this.episode = response.data.episode;
           this.loading = false;
         }

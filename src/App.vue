@@ -2,19 +2,24 @@
   <div id="app">
     <Header></Header>
     <router-view></router-view>
+    <Player />
+      <div id="ytPlayer" />
     <Footer></Footer>
+    
   </div>
 </template>
 
 <script>
 import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
+import Player from './components/player/Player.vue';
 
 export default {
   name: "app",
   components: {
     Header,
-    Footer
+    Footer,
+    Player
   }
 };
 </script>
@@ -36,4 +41,9 @@ export default {
   padding-left: 1rem;
 }
 
+#ytPlayer {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
 </style>
