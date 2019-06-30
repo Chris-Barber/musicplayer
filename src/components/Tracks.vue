@@ -41,14 +41,20 @@
             </a>
           </header>
           <div class="card-content">
-            {{ episode.summary }}
-            <br>
-            {{episode.airDate | formatDate}}
+            <div class="columns">
+              <div class="column is-8">
+                {{ episode.summary }}
+                <br>
+                {{episode.airDate | formatDate}}
+              </div>
+              <div class="column is-4">
+                <a class="button is-link is-rounded" @click="playEpisode">{{ playButtonText }}</a>
+              </div>
+            </div>
+
             <hr>
 
-            <article class="media" v-for="track in tracks">
-              <song :track="track"/>
-            </article>
+            <song v-for="track in tracks" :track="track"/>
           </div>
         </div>
       </div>
@@ -64,6 +70,8 @@ import Benji from "./Benji";
 import Gilles from "./Gilles";
 import PulseLoader from "./PulseLoader.vue";
 import Song from "./playlist/Song";
+import { mapGetters } from "vuex";
+import { str } from "@/utils/aux-methods.js";
 
 Vue.filter("formatDate", function(value) {
   if (value) {
@@ -87,7 +95,8 @@ export default {
     return {
       tracks: [],
       episode: {},
-      loading: true
+      loading: true,
+      inPlaylist: false
     };
   },
   computed: {
@@ -99,9 +108,28 @@ export default {
     },
     isGillesPeterson: function() {
       return this.dj.toLowerCase() === "gilles-peterson";
+    },
+    playButtonText: function() {
+      console.log(this.inPlaylist);
+      return this.inPlaylist ? "Now playing" : "Play all";
     }
   },
   methods: {
+    playEpisode() {
+      if (this.inPlaylist) {
+        return;
+      }
+
+      this.tracks.forEach(track => {
+        this.$store.dispatch("addOrPlaySong", {
+          artist: str(track.artist),
+          track: str(track.title),
+          image: track.thumbnailLink
+        });
+      });
+
+      this.inPlaylist = true;
+    },
     fetchData() {
       return EpisodeService.getTracks(this.dj, this.episodeDate).then(
         response => {
@@ -120,9 +148,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.track__image {
-  margin-top: 1rem;
-}
-</style>
 

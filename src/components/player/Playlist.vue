@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="{ name: 'Playlist', params: {} }">
+  <router-link :to="{ name: 'home', params: {} }">
     <div class="playlist">
       <i class="playlist-icon fas fa-list-ul"></i>
       <div class="playlist-info">{{ playlistStatus }}</div>

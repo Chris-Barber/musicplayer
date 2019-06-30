@@ -5,7 +5,7 @@
     </div>
 
     <div class="player-title">
-      <router-link class="artist" :to="{ name: 'Artist', params: { name: playing.artist } }">{{ playing.artist }}</router-link>
+      <router-link class="artist" :to="{ name: 'home', params: { name: playing.artist } }">{{ playing.artist }}</router-link>
       <span class="track">{{ playing.track }}</span>
     </div>
 

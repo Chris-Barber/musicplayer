@@ -1,5 +1,5 @@
 <template>
-  <div>
+   <article class="media" >
     <figure class="media-left track__image">
       <p class="image is-64x64">
         <img :src="track.thumbnailLink">
@@ -17,7 +17,7 @@
         </p>
       </div>
     </div>
-  </div>
+  </article>
 </template>
 
 <script>
@@ -54,3 +54,8 @@ export default {
   }
 };
 </script>
+<style scoped>
+.track__image {
+  margin-top: 1rem;
+}
+</style>

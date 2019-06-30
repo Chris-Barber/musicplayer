@@ -71,6 +71,7 @@ const store = new Vuex.Store({
   },
   actions: {
     addOrPlaySong (context, { artist, track, image }) {
+      
       if (context.getters.searchSongByNameAndArtist(track, artist)) {
         return;
       }

@@ -2,7 +2,9 @@
   <div class="buttons-panel">
     <i class="control-button fas fa-step-backward" :class="{ 'disabled': !hasPrevSong }" @click="playPrevSong" />
     <i class="control-button fas" :class="[isPlaying ? 'fa-pause' : 'fa-play']" @click="playPause" />
-    <i class="control-button fas fa-step-forward" :class="{ 'disabled': !hasNextSong }" @click="playNextSong" />
+    <!-- <i class="control-button fas fa-step-forward" :class="{ 'disabled': !hasNextSong }" @click="playNextSong" /> -->
+    <a @click="playNextSong">>></a>
+   
   </div>
 </template>
 
