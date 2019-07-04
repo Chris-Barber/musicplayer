@@ -100,7 +100,7 @@ const tracksArray = (tracks, image) => {
 };
 
 const trackDetail = (track) => {
-  console.log(track);
+  
 
   return track;
 };

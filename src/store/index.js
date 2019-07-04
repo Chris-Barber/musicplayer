@@ -81,7 +81,6 @@ const store = new Vuex.Store({
       this.$youtube.search(query).then(results => {
         const youtubeId = results[0].id.videoId;
         const thumbnail = results[0].snippet.thumbnails.high.url;
-
         context.commit('addSong', { artist, track, image, youtubeId, thumbnail });
       });
     },

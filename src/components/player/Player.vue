@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar is-fixed-bottom">
+  <nav class="navbar is-fixed-bottom" v-if="hasSong">
     <div class="player" :class="{ 'hidden': !hasSong }">
       <div class="player-image-wrapper">
         <img :src="imagePlaying" class="player-image">
@@ -142,7 +142,7 @@ export default {
   box-sizing: border-box;
 
   padding: 12px 50px;
-  background-color: @color-white;
+  // background-color: @color-white;
   box-shadow: 0 -1/4rem 1/8rem 0 @color-shadow;
   transition: all 0.3s ease-in-out;
   transform: none;
@@ -213,7 +213,7 @@ export default {
       }
     }
     .track {
-      font-family: "Open Sans", sans-serif;
+      // font-family: "Open Sans", sans-serif;
       font-size: 21px;
       font-weight: 300;
     }
