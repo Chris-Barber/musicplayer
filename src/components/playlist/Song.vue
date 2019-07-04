@@ -1,12 +1,12 @@
 <template>
    <article class="media" >
     <figure class="media-left track__image">
-      <div class="image is-64x64">
-        <img :src="track.thumbnailLink" @click="selectSong">
-        <div class="overlay" @click="selectSong">
-              <a href="#" class="icon" title="Play">
-   <font-awesome-icon icon="play" size="xs" />   
-              </a>
+      <div class="image is-64x64" @click="selectSong">
+        <img :src="track.thumbnailLink">
+        <div class="overlay" >
+              <div class="icon" >
+                  <font-awesome-icon icon="play" size="xs" />   
+              </div>
         </div>
       </div>
     </figure>
@@ -33,33 +33,38 @@ export default {
   data() {
     return {
       inPlaylist: false
-    };
+    }
   },
   computed: {
-    ...mapGetters(["playing"]),
+    ...mapGetters(["playing", "hasSong"]),
     selected() {
       return this.playing.youtubeId === this.track.youtubeId;
     }
   },
   methods: {
     selectSong() {
-      if (this.selected) {
+debugger;
+      if (this.selected) {        
         return;
       }
 
       if (this.inPlaylist) {
         this.$store.dispatch("changePlayingSong", {
           artist: str(this.track.artist),
-          track: str(this.track.title)
+          track: str(this.track.title)          
         });
-      } else {
+      } else {                
         this.$store.dispatch("addOrPlaySong", {
           artist: str(this.track.artist),
           track: str(this.track.title),
-          image: this.track.thumbnailLink
-        });
-        this.inPlaylist = true;
-      }
+          image: this.track.thumbnailLink          
+        });                    
+        this.inPlaylist = true; 
+        if(this.hasSong)
+        {
+          this.selectSong();
+        }
+      }       
     }
   }
 };
@@ -89,7 +94,7 @@ export default {
 }
 
 .icon {
-  color: white;
+  // color: white;
   font-size: 100px;
   position: absolute;
   top: 50%;

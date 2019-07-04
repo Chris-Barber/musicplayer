@@ -110,7 +110,6 @@ export default {
       return this.dj.toLowerCase() === "gilles-peterson";
     },
     playButtonText: function() {
-      console.log(this.inPlaylist);
       return this.inPlaylist ? "Now playing" : "Play all";
     }
   },

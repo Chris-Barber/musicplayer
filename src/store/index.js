@@ -85,7 +85,7 @@ const store = new Vuex.Store({
       });
     },
     changePlayingSong (context, { artist, track, youtubeId }) {
-     
+     debugger;
       const index = youtubeId
         ? context.getters.searchSongIndexByYoutubeId(youtubeId)
         : context.getters.searchSongIndexByNameAndArtist(track, artist);
