@@ -1,50 +1,62 @@
 <template>
-  <div class="player" :class="{ 'hidden': !hasSong }">
-    <div class="player-image-wrapper">
-      <img :src="imagePlaying" class="player-image">
-    </div>
+  <nav class="navbar is-fixed-bottom">
+    <div class="player" :class="{ 'hidden': !hasSong }">
+      <div class="player-image-wrapper">
+        <img :src="imagePlaying" class="player-image">
+      </div>
 
-    <div class="player-title">
-      <router-link class="artist" :to="{ name: 'home', params: { name: playing.artist } }">{{ playing.artist }}</router-link>
-      <span class="track">{{ playing.track }}</span>
-    </div>
+      <div class="player-title">
+        <router-link
+          class="artist"
+          :to="{ name: 'home', params: { name: playing.artist } }"
+        >{{ playing.artist }}</router-link>
+        <span class="track">{{ playing.track }}</span>
+      </div>
 
-    <div class="player-controls-panel">
-      <ButtonsPanel :is-playing="isPlaying" @play="play" @pause="pause" />
+      <div class="player-controls-panel">
+        <ButtonsPanel :is-playing="isPlaying" @play="play" @pause="pause"/>
 
-      <div class="progress-bar-wrapper">
-        <ProgressBar :time="time" :duration="duration" @changeTime="setPlayerTime" />
+        <div class="progress-bar-wrapper">
+          <ProgressBar :time="time" :duration="duration" @changeTime="setPlayerTime"/>
+        </div>
+      </div>
+
+      <div class="player-sound-panel">
+        <!-- <SoundControl @changeVolume="changeVolume" @mute="mute" @unmute="unmute" /> -->
+      </div>
+
+      <div class="player-music-time">
+        <Playlist/>
+
+        <div class="time-song">
+          <SoundIcon :playing="isPlaying"/>
+          <!-- <TimeDuration :time="time" :duration="duration" /> -->
+        </div>
       </div>
     </div>
-
-    <div class="player-sound-panel">
-      <!-- <SoundControl @changeVolume="changeVolume" @mute="mute" @unmute="unmute" /> -->
-    </div>
-
-    <div class="player-music-time">
-      <Playlist />
-
-      <div class="time-song">
-        <SoundIcon :playing="isPlaying" />
-        <!-- <TimeDuration :time="time" :duration="duration" /> -->
-      </div>
-    </div>
-  </div>
+  </nav>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-import ButtonsPanel from './ButtonsPanel.vue';
-import ProgressBar from './ProgressBar.vue';
-import Playlist from './Playlist.vue';
-import SoundIcon from './SoundIcon.vue';
-import TimeDuration from './TimeDuration.vue';
-import SoundControl from './SoundControl.vue';
+import { mapGetters } from "vuex";
+import ButtonsPanel from "./ButtonsPanel.vue";
+import ProgressBar from "./ProgressBar.vue";
+import Playlist from "./Playlist.vue";
+import SoundIcon from "./SoundIcon.vue";
+import TimeDuration from "./TimeDuration.vue";
+import SoundControl from "./SoundControl.vue";
 
 export default {
-  name: 'Player',
-  components: { ButtonsPanel, ProgressBar, Playlist, SoundIcon, TimeDuration, SoundControl },
-  data () {
+  name: "Player",
+  components: {
+    ButtonsPanel,
+    ProgressBar,
+    Playlist,
+    SoundIcon,
+    TimeDuration,
+    SoundControl
+  },
+  data() {
     return {
       time: 0,
       duration: 0,
@@ -53,12 +65,12 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(['playing', 'imagePlaying', 'hasSong'])
+    ...mapGetters(["playing", "imagePlaying", "hasSong"])
   },
   watch: {
-    playing: function (playing) {
+    playing: function(playing) {
       if (!playing) {
-        console.log('No song!');
+        console.log("No song!");
         return;
       }
 
@@ -67,23 +79,23 @@ export default {
       }
     }
   },
-  mounted () {
+  mounted() {
     this.$youtube.player.setOnReadyEvent(() => {
       // this.$bus.$emit('api-change-volume', this.$youtube.player.volume());
       // this.$bus.$emit('api-change-mute', this.$youtube.player.muted());
     });
 
-    this.$youtube.player.setCurrentTimeEvent((time) => {
+    this.$youtube.player.setCurrentTimeEvent(time => {
       this.time = time;
     });
 
     this.$youtube.player.setEndSongEvent(() => {
       this.isPlaying = false;
-      this.$store.dispatch('playNextSong');
+      this.$store.dispatch("playNextSong");
     });
   },
   methods: {
-    load (youtubeId) {
+    load(youtubeId) {
       this.actual = youtubeId;
 
       this.$youtube.player.load(youtubeId, true).then(() => {
@@ -94,27 +106,27 @@ export default {
         document.title = `${track} - ${artist}`;
       });
     },
-    play () {
+    play() {
       if (this.isPlaying) return;
       this.$youtube.player.play();
       this.isPlaying = true;
     },
-    pause () {
+    pause() {
       if (!this.isPlaying) return;
       this.$youtube.player.pause();
       this.isPlaying = false;
     },
-    setPlayerTime (time) {
+    setPlayerTime(time) {
       this.$youtube.player.goTo(time);
       this.time = time;
     },
-    changeVolume (volume) {
+    changeVolume(volume) {
       this.$youtube.player.setVolume(volume);
     },
-    mute () {
+    mute() {
       this.$youtube.player.mute();
     },
-    unmute () {
+    unmute() {
       this.$youtube.player.unmute();
     }
   }
@@ -140,7 +152,7 @@ export default {
   }
 
   &::after {
-    content: '';
+    content: "";
     clear: both;
     display: table;
   }
@@ -156,7 +168,7 @@ export default {
       width: 60px;
       height: 60px;
       border-radius: 50%;
-      box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.10);
+      box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1);
       background-color: #ccc;
       display: inline-block;
       object-fit: cover;
@@ -173,7 +185,8 @@ export default {
     box-sizing: border-box;
     vertical-align: middle;
 
-    .artist, .track {
+    .artist,
+    .track {
       width: 100%;
       margin: 0;
       padding: 0;
