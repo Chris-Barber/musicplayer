@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from "./router";
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCompactDisc } from '@fortawesome/free-solid-svg-icons'
+import { faCompactDisc, faStepForward, faStepBackward, faPlay, faPause } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import VueResource from "vue-resource";
 import store from './store/index.js';
@@ -10,7 +10,7 @@ import store from './store/index.js';
 Vue.use(VueResource);
 Vue.use(router);
 
-library.add(faCompactDisc)
+library.add([faCompactDisc, faStepForward, faStepBackward, faPlay, faPause])
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 

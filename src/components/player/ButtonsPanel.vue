@@ -1,18 +1,19 @@
 <template>
   <div class="buttons-panel">
-    <i class="control-button fas fa-step-backward" :class="{ 'disabled': !hasPrevSong }" @click="playPrevSong" />
-    <i class="control-button fas" :class="[isPlaying ? 'fa-pause' : 'fa-play']" @click="playPause" />
-    <!-- <i class="control-button fas fa-step-forward" :class="{ 'disabled': !hasNextSong }" @click="playNextSong" /> -->
-    <a @click="playNextSong">>></a>
-   
+
+<font-awesome-icon icon="step-backward" size="lg" class="control-button" :class="{ 'disabled': !hasPrevSong }" @click="playPrevSong"/>
+<font-awesome-icon icon="play" size="lg" @click="playPause" class="control-button" v-if="!isPlaying"/>   
+<font-awesome-icon icon="pause" size="lg" @click="playPause" class="control-button" v-if="isPlaying"/>       
+<font-awesome-icon icon="step-forward" size="lg" @click="playNextSong" class="control-button"/>   
+
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters } from "vuex";
 
 export default {
-  name: 'ButtonsPanel',
+  name: "ButtonsPanel",
   props: {
     isPlaying: {
       type: Boolean,
@@ -20,17 +21,17 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['hasPrevSong', 'hasNextSong'])
+    ...mapGetters(["hasPrevSong", "hasNextSong"])
   },
   methods: {
     playPause() {
-      this.$emit(this.isPlaying ? 'pause' : 'play');
+      this.$emit(this.isPlaying ? "pause" : "play");
     },
-    playPrevSong () {
-      this.$store.dispatch('playPrevSong');
+    playPrevSong() {
+      this.$store.dispatch("playPrevSong");
     },
-    playNextSong () {
-      this.$store.dispatch('playNextSong');
+    playNextSong() {
+      this.$store.dispatch("playNextSong");
     }
   }
 };
@@ -47,7 +48,7 @@ export default {
   line-height: 24px;
   font-size: 28px;
 
-  .control-button  {
+  .control-button {
     cursor: pointer;
     color: @color-light-letter;
     transition: all 0.3s ease-in-out;
