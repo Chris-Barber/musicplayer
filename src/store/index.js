@@ -53,9 +53,11 @@ const store = new Vuex.Store({
     addSong (state, song) {
       state.songs.push(song);
     },
-    addPlaylistSong (state, song, i) {
-      const numSongs = state.songs.length-1;
-      state.songs.splice(numSongs+i,0,song);
+    addPlaylistSong (state, song) {
+      // const numSongs = state.songs.length;
+      // const position = numSongs+song.index;
+      // console.log(`${song.artist} ${song.track} SongCount:${state.songs.length} Index:${song.index} Position:${position} `)
+      state.songs.splice(song.index,0,song);      
     },
     removeSong (state, index) {
       if (index === state.playing && state.playing > 0) {
@@ -77,20 +79,28 @@ const store = new Vuex.Store({
     addPlaylist(context, tracks){
 
       debugger;
-      var i;
-      for (i = 0; i < tracks.length; i++) { 
+      
+      for (let i = 0; i < tracks.length; i++) { 
 
         let song = tracks[i];
         const query = buildSearchQuery(song.artist, song.title);
 
         this.$youtube.search(query).then(results => {
-          console.log(i);
-          const youtubeId = results[0].id.videoId;
-          const thumbnail = results[0].snippet.thumbnails.high.url;
-          const artist = song.artist;
-          const track = song.title;
-          const image = song.thumbnailLink;
-          context.commit('addPlaylistSong', { artist, track, image, youtubeId, thumbnail }, i);
+          try {          
+            const youtubeId = results[0].id.videoId;
+            const thumbnail = results[0].snippet.thumbnails.high.url;
+            const artist = song.artist;
+            const track = song.title;
+            const image = song.thumbnailLink;
+            const index = i;
+            context.commit('addPlaylistSong', { artist, track, image, youtubeId, thumbnail, index });
+            
+          } catch (error) {
+            console.log(error);
+            console.log(`Error: ${song.artist} ${song.title} ${i}`);
+          }
+          
+          
         });
       }
 
