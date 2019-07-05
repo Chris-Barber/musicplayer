@@ -78,8 +78,6 @@ const store = new Vuex.Store({
   actions: {
     addPlaylist(context, tracks){
 
-      debugger;
-      
       for (let i = 0; i < tracks.length; i++) { 
 
         let song = tracks[i];
