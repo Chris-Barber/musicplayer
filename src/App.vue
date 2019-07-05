@@ -1,9 +1,10 @@
 <template>
   <div id="app">
     <Header></Header>
-    <router-view></router-view>
     <Player />
-      <div id="ytPlayer" />
+    <router-view></router-view>
+    
+    <div id="ytPlayer" />
     <Footer></Footer>
     
   </div>

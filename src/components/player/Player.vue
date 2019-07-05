@@ -1,40 +1,54 @@
 <template>
-  <nav class="navbar is-fixed-bottom" v-if="hasSong">
-    <div class="player" :class="{ 'hidden': !hasSong }">
-      <div class="player-image-wrapper">
-        <img :src="imagePlaying" class="player-image">
-      </div>
+  <div>
+  
 
-      <div class="player-title">
-        <router-link
-          class="artist"
-          :to="{ name: 'home', params: { name: playing.artist } }"
-        >{{ playing.artist }}</router-link>
-        <span class="track">{{ playing.track }}</span>
-      </div>
+    <nav class="navbar is-fixed-bottom" v-if="hasSong">
+      <div class="player" :class="{ 'hidden': !hasSong }">
 
-      <div class="player-controls-panel">
-        <ButtonsPanel :is-playing="isPlaying" @play="play" @pause="pause"/>
 
-        <div class="progress-bar-wrapper">
-          <ProgressBar :time="time" :duration="duration" @changeTime="setPlayerTime"/>
+        <div class="player-image-wrapper">
+          <img :src="imagePlaying" class="player-image">
         </div>
-      </div>
 
-      <div class="player-sound-panel">
-        <!-- <SoundControl @changeVolume="changeVolume" @mute="mute" @unmute="unmute" /> -->
-      </div>
-
-      <div class="player-music-time">
-        <Playlist/>
-
-        <div class="time-song">
-          <SoundIcon :playing="isPlaying"/>
-          <!-- <TimeDuration :time="time" :duration="duration" /> -->
+        <div class="player-title">
+          <router-link
+            class="artist"
+            :to="{ name: 'home', params: { name: playing.artist } }"
+          >{{ playing.artist }}</router-link>
+          <span class="track">{{ playing.track }}</span>
         </div>
+
+
+
+        <div class="player-controls-panel">
+          <ButtonsPanel :is-playing="isPlaying" @play="play" @pause="pause"/>
+
+          <div class="progress-bar-wrapper">
+            <ProgressBar :time="time" :duration="duration" @changeTime="setPlayerTime"/>
+          </div>
+        </div>
+        
+
+    
+        <div class="player-sound-panel">
+          <SoundControl @changeVolume="changeVolume" @mute="mute" @unmute="unmute" />
+        </div>
+
+        <div class="player-music-time">
+          <Playlist/>
+
+          <div class="time-song">
+            <SoundIcon :playing="isPlaying"/>
+            <TimeDuration :time="time" :duration="duration" /> 
+          </div>
+        </div>
+      
+
       </div>
-    </div>
-  </nav>
+    </nav>
+
+  </div>
+  
 </template>
 
 <script>

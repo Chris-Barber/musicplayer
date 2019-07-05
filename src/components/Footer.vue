@@ -1,8 +1,8 @@
 <template>
   <footer class="footer">
     <div class="container">
-      <div class="columns">
-        <div class="column is-3 is-offset-2">
+      <!-- <div class="columns"> -->
+        <!-- <div class="column is-3 is-offset-2">
           <h2>
             <strong>Category</strong>
           </h2>
@@ -80,21 +80,13 @@
             </li>
           </ul>
         </div>
-      </div>
+      </div> -->
       <div class="content has-text-centered">
-        <p>
-          <a class="icon" href="https://github.com/dansup/bulma-templates">
-            <i class="fa fa-github"></i>
-          </a>
-        </p>
-        <div class="control level-item">
-          <a href="https://github.com/dansup/bulma-templates">
-            <div class="tags has-addons">
-              <span class="tag is-dark">Bulma Templates</span>
-              <span class="tag is-info">MIT license</span>
-            </div>
-          </a>
-        </div>
+        
+          <h2>
+            <strong>CB</strong>
+          </h2>
+      
       </div>
     </div>
   </footer>
