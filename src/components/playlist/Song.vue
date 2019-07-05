@@ -1,7 +1,7 @@
 <template>
    <article class="media" >
     <figure class="media-left track__image">
-      <div class="image is-64x64" @click="selectSong">
+      <div class="image is-64x64" @click="$emit('selectSong')">
         <img :src="track.thumbnailLink">
         <div class="overlay" >
               <div class="icon" >
@@ -36,36 +36,10 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(["playing", "hasSong"]),
-    selected() {
-      return this.playing.youtubeId === this.track.youtubeId;
-    }
+
   },
   methods: {
-    selectSong() {
-debugger;
-      if (this.selected) {        
-        return;
-      }
-
-      if (this.inPlaylist) {
-        this.$store.dispatch("changePlayingSong", {
-          artist: str(this.track.artist),
-          track: str(this.track.title)          
-        });
-      } else {                
-        this.$store.dispatch("addOrPlaySong", {
-          artist: str(this.track.artist),
-          track: str(this.track.title),
-          image: this.track.thumbnailLink          
-        });                    
-        this.inPlaylist = true; 
-        if(this.hasSong)
-        {
-          this.selectSong();
-        }
-      }       
-    }
+    
   }
 };
 </script>

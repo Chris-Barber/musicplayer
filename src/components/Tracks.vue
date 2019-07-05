@@ -54,7 +54,8 @@
 
             <hr>
 
-            <song v-for="track in tracks" :track="track"/>
+            <song v-for="(track, i) in tracks" :track="track" 
+            @selectSong="selectSong($event, i)" :key="track.id"/>
           </div>
         </div>
       </div>
@@ -94,12 +95,17 @@ export default {
   data() {
     return {
       tracks: [],
+      track: {},
       episode: {},
       loading: true,
       inPlaylist: false
     };
   },
   computed: {
+        ...mapGetters(["playing", "hasSong"]),
+    selected() {
+      return this.playing.youtubeId === this.track.youtubeId;
+    },
     djName: function() {
       return this.dj.replace("-", " ");
     },
@@ -114,18 +120,41 @@ export default {
     }
   },
   methods: {
+    selectSong(e, i) {
+
+      this.track = this.tracks[i];
+
+      if (this.selected) {        
+        return;
+      }
+
+      if (this.inPlaylist) {
+        this.$store.dispatch("changePlayingSong", {
+          artist: str(this.track.artist),
+          track: str(this.track.title)          
+        });
+      } else {                
+        this.$store.dispatch("switchSong", {
+          artist: str(this.track.artist),
+          track: str(this.track.title),
+          image: this.track.thumbnailLink          
+        });                    
+      }       
+    },
     playEpisode() {
       if (this.inPlaylist) {
         return;
       }
 
-      this.tracks.forEach(track => {
-        this.$store.dispatch("addOrPlaySong", {
-          artist: str(track.artist),
-          track: str(track.title),
-          image: track.thumbnailLink
-        });
-      });
+      this.$store.dispatch("addPlaylist", this.tracks);
+
+      // this.tracks.forEach(track => {
+      //   this.$store.dispatch("addOrPlaySong", {
+      //     artist: str(track.artist),
+      //     track: str(track.title),
+      //     image: track.thumbnailLink
+      //   });
+      // });
 
       this.inPlaylist = true;
     },

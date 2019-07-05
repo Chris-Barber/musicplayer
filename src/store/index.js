@@ -53,6 +53,10 @@ const store = new Vuex.Store({
     addSong (state, song) {
       state.songs.push(song);
     },
+    addPlaylistSong (state, song, i) {
+      const numSongs = state.songs.length-1;
+      state.songs.splice(numSongs+i,0,song);
+    },
     removeSong (state, index) {
       if (index === state.playing && state.playing > 0) {
         state.playing--;
@@ -70,6 +74,54 @@ const store = new Vuex.Store({
     }
   },
   actions: {
+    addPlaylist(context, tracks){
+
+      debugger;
+      var i;
+      for (i = 0; i < tracks.length; i++) { 
+
+        let song = tracks[i];
+        const query = buildSearchQuery(song.artist, song.title);
+
+        this.$youtube.search(query).then(results => {
+          console.log(i);
+          const youtubeId = results[0].id.videoId;
+          const thumbnail = results[0].snippet.thumbnails.high.url;
+          const artist = song.artist;
+          const track = song.title;
+          const image = song.thumbnailLink;
+          context.commit('addPlaylistSong', { artist, track, image, youtubeId, thumbnail }, i);
+        });
+      }
+
+    },
+    switchSong (context, { artist, track, image, youtubeId }) {
+      
+      const query = buildSearchQuery(artist, track);
+
+      this.$youtube.search(query).then(results => {
+        const youtubeId = results[0].id.videoId;
+        const thumbnail = results[0].snippet.thumbnails.high.url;
+
+        let index = youtubeId
+        ? context.getters.searchSongIndexByYoutubeId(youtubeId)
+        : context.getters.searchSongIndexByNameAndArtist(track, artist);
+
+        if (index === -1) {
+          context.commit('addSong', { artist, track, image, youtubeId, thumbnail });
+        }
+          
+        index = youtubeId
+        ? context.getters.searchSongIndexByYoutubeId(youtubeId)
+        : context.getters.searchSongIndexByNameAndArtist(track, artist);
+
+        if (context.getters.playing.youtubeId !== youtubeId) {
+          context.commit('playSong', index);
+        }
+        
+      });
+
+    },
     addOrPlaySong (context, { artist, track, image }) {
       
       if (context.getters.searchSongByNameAndArtist(track, artist)) {
@@ -85,7 +137,7 @@ const store = new Vuex.Store({
       });
     },
     changePlayingSong (context, { artist, track, youtubeId }) {
-     debugger;
+
       const index = youtubeId
         ? context.getters.searchSongIndexByYoutubeId(youtubeId)
         : context.getters.searchSongIndexByNameAndArtist(track, artist);
